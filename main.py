@@ -6,8 +6,8 @@ Created on Sun Jan  7 19:43:04 2018
 @author: Shane
 """
 
-import StarLists.py as SL
-import StarClass.py as SC
+import starLists.py as SL
+import starClass.py as SC
 import random as r
 
 def main():
