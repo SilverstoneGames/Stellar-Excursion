@@ -11,9 +11,14 @@ import random as r
 import StarLists.py as SL
 class Star:
     
-    def __init__(self):
-        self.name = r.choice(SL.starNames)
-        self.starType = r.choice(SL.starTypes)
+    def __init__(self, name):
+        x = r.uniform(0, 1)
+        if x <= 0.00000001:
+            self.starType = "Pulsar"
+        elif x > 0.00000001 && <= 0.000000025:
+            self.starType = "Neutron Star"
+        else:
+            self.starType = r.choice(SL.starTypes)
         self.starTypeNum = r.choice(SL.starTypeNum)
         if self.starType == "O":
             self.starColour = "Blue"
@@ -40,4 +45,21 @@ class Star:
             self.starAppTemp = r.randint(5000, 6000)
             self.starMass = r.uniform(1.0, 1.2)
             self.starLumin = r.uniform(0.8, 1.4)
+        elif self.starType == "K":
+            self.starColour = r.choice("Orange", "Red-orange", "Red")
+            self.starAppTemp = r.randint(3500, 5000)
+            self.starMass = r.uniform(0.6, 0.9)
+            self.starLumin = r.uniform(0.2, 0.5)
+        elif self.starType == "M":
+            self.starColour = "Red"
+            self.starAppTemp = r.randint(2500, 3500)
+            self.starMass = r.uniform(0.6, 0.9)
+            self.starLumin = r.uniform(0.2, 0.5)   
         
+    def display(self):
+        print("Star Class: " + self.starType + self.starTypeNum)
+        print("Colour:     " + self.starColour)
+        print("Approximate Surface Temperature: " + self.starAppTemp)
+        print("Approximate Mass: " + self.starMass + " Solar Masses")
+        print("Approximate Luminosity: " self.starLumin + " times Sol luminosity")
+        print("Press any key to exit...")
