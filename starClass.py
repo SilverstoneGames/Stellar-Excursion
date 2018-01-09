@@ -11,9 +11,15 @@ import random as r
 import starLists as SL
 class Star:
     
-    def __init__(self, name):
+    def __init__(self, designation):
         x = r.uniform(0, 1)
-        self.starName = name
+        y = r.uniform(0, 1)
+        self.isExplored = False
+        self.starDesignation = designation
+        if y <= 0.000001:
+            self.starName = r.choice(SL.starNames)
+        else:
+            self.starName = "Unnamed"
         if x <= 0.00000001:
             self.starType = "Pulsar"
         elif x > 0.00000001 and x <= 0.000000025:
@@ -55,13 +61,15 @@ class Star:
             self.starColour = "Red"
             self.starAppTemp = r.randint(2500, 3500)
             self.starMass = r.uniform(0.6, 0.9)
-            self.starLumin = r.uniform(0.2, 0.5)   
+            self.starLumin = r.uniform(0.2, 0.5) 
+            
+        
         
     def display(self):
+        print("Star Designation:                " + str(self.starDesignation))
         print("Star Name:                       " + self.starName)
         print("Star Class:                      " + str(self.starType) + str(self.starTypeNum))
         print("Colour:                          " + self.starColour)
         print("Approximate Surface Temperature: " + str(self.starAppTemp))
         print("Approximate Mass:                " + str(self.starMass) + " Solar Masses")
         print("Approximate Luminosity:          " + str(self.starLumin) + " times Sol luminosity")
-        print("Press any key to exit...")

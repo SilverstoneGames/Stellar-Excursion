@@ -10,13 +10,31 @@ import starLists as SL
 import starClass as SC
 import random as r
 
+play = 1
+
 def main():
   
-  star = SC.Star(r.choice(SL.starNames))
+    
+    print("Placeholder intro")
   
-  star.display()
-  
-  print("And the journey continues...")
-  input("Press enter to exit the program...")
-
+    target = input("Enter new to travel to a new star: ")
+    play = 1
+    while play == 1:
+        if target.lower() == "new":
+            star = SC.Star(r.randint(10000, 9999999999999))
+            
+            star.display()
+      
+            target = input("Enter new to travel to a new star: ")
+        elif target.lower() == "exit" or target.lower() == "quit":
+            input("Thank you for playing Stellar Excursion!")
+            play = 0
+        else:
+            
+            star = SC.Star(r.randint(10000, 9999999999999))
+            
+            star.display()
+      
+            target = input("Enter new to travel to a new star: ")
+            
 main()
